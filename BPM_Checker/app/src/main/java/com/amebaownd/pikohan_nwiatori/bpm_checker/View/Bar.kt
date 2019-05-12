@@ -39,6 +39,7 @@ class Bar(context: Context, max: Float,color:Int,itemSize:Int,interval:Float,par
             val bottom = top + strokeWidth
             val right = data[i] / max * parentWidth
             Log.d("aaaaa", i.toString())
+            paint.alpha=255-(200*data[i]/max).toInt()
             canvas!!.drawRect(0f, top, right, bottom, paint)
         }
     }
@@ -49,17 +50,22 @@ class Bar(context: Context, max: Float,color:Int,itemSize:Int,interval:Float,par
     fun setMax(num:Float){this.max=num}
     fun setItemSize(num:Int){this.itemSize=num}
     fun setInterval(width:Float){
-        this.parentHeight=500f
-        this.parentWidth=500f
         this.interval=width
-        this.strokeWidth=(parentHeight-(itemSize-1)*width)/itemSize
+        this.strokeWidth=(parentHeight-(itemSize-1)*interval)/itemSize
         paint.strokeWidth=this.strokeWidth
     }
-    fun setParentHeight(value:Float){this.parentHeight=value}
-    fun setParentWidth(value:Float){this.parentWidth=value}
+    fun setParentHeight(value:Float){
+        this.parentHeight=value
+        setInterval(this.interval)
+    }
+    fun setParentWidth(value:Float){
+        this.parentWidth=value
+        setInterval(this.interval)
+    }
 
     fun update(data:MutableList<Float>){
         this.data=data
         invalidate()
     }
+    fun getParentHeight()=this.parentHeight
 }
