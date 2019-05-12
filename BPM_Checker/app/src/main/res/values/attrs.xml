@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="BarGraph">
+        <attr name="color" format="color|reference"/>
+        <attr name="max" format="float"/>
+        <attr name="item_size" format="integer"/>
+        <attr name="interval" format="float"/>
+    </declare-styleable>
+
+</resources>
