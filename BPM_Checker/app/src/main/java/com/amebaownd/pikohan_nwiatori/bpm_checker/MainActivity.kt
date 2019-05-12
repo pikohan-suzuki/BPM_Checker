@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         val rand = Random()
 
         findViewById<Button>(R.id.button).setOnClickListener{barGraph.addBar(rand.nextInt(100).toFloat())
-        circle.update()}
+        circle.update(rand.nextInt(300).toFloat())}
     }
 
     override fun onResume() {
