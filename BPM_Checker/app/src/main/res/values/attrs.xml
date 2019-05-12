@@ -11,6 +11,7 @@
     <declare-styleable name="Circle">
         <attr name="circle_color" format="color|reference"/>
         <attr name="stroke_width" format="float|reference"/>
+        <attr name="circle_max" format="float|reference"/>
     </declare-styleable>
 
 </resources>
