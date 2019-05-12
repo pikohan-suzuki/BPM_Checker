@@ -20,7 +20,7 @@ class BarGraph : LinearLayout {
 
     private fun initView(context: Context, attrs: AttributeSet?){
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.BarGraph)
-        setColor(typedArray.getColor(R.styleable.BarGraph_color,Color.RED))
+        setColor(typedArray.getColor(R.styleable.BarGraph_bar_color,Color.RED))
         setMax(typedArray.getFloat(R.styleable.BarGraph_max,100f))
         setItemSize(typedArray.getInteger(R.styleable.BarGraph_item_size,10))
         setInterval(typedArray.getFloat(R.styleable.BarGraph_interval,5f))
@@ -29,12 +29,17 @@ class BarGraph : LinearLayout {
     }
 
     fun addBar(data:Float){
+        if(bar.getParentHeight()==0f) {
+            bar.setParentWidth(this.width.toFloat())
+            bar.setParentHeight(this.height.toFloat())
+        }
         if(barQueue.getSize()<itemSize) {
             barQueue.enqueue(data)
-            bar.update(barQueue.getList())
         }else{
-
+            barQueue.dequeue()
+            barQueue.enqueue(data)
         }
+        bar.update(barQueue.getList())
     }
 
     fun setColor(color:Int){this.color=color}
@@ -45,13 +50,12 @@ class BarGraph : LinearLayout {
     fun getMax()=max
     fun getItemSize()=itemSize
 
-
     class BarQueue(){
         private val mutableList= mutableListOf<Float>()
         fun enqueue(data:Float){
             mutableList.add(data)
         }
-        fun Depue():Float?{
+        fun dequeue():Float?{
             if(mutableList.size!=0){
                 val result = mutableList[0]
                 mutableList.removeAt(0)
