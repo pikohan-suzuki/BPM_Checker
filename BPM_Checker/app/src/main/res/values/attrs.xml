@@ -2,10 +2,15 @@
 <resources>
 
     <declare-styleable name="BarGraph">
-        <attr name="color" format="color|reference"/>
+        <attr name="bar_color" format="color|reference"/>
         <attr name="max" format="float"/>
         <attr name="item_size" format="integer"/>
         <attr name="interval" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="Circle">
+        <attr name="circle_color" format="color|reference"/>
+        <attr name="stroke_width" format="float|reference"/>
     </declare-styleable>
 
 </resources>
