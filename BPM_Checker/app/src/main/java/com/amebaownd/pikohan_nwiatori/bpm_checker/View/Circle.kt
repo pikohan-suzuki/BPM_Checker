@@ -20,6 +20,7 @@ class Circle : View {
     private var centerx = 0f
     private var centery = 0f
     private var radius = 100f
+    private var max=300f
     private var color:Int=Color.RED
     private var strokeWidth=0.5f
     private var primaryPaint = Paint()
@@ -28,6 +29,7 @@ class Circle : View {
     fun setCenterx(num:Float){this.centerx=num}
     fun setCentery(num:Float){this.centery=num}
     fun setRaduis(num:Float){this.radius=num}
+    fun setMax(num:Float){this.max=num}
     fun setStrokeWidth(width:Float){
         this.strokeWidth=width
         primaryPaint.strokeWidth=width
@@ -43,12 +45,18 @@ class Circle : View {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.Circle)
         setColor(typedArray.getColor(R.styleable.Circle_circle_color, Color.RED))
         setStrokeWidth(typedArray.getFloat(R.styleable.Circle_stroke_width, 2f))
+        setMax(typedArray.getFloat(R.styleable.Circle_circle_max, 300f))
+
         setCenterx(width/2f)
         setCentery(height/2f)
         primaryPaint.style=Paint.Style.STROKE
     }
 
-    fun update(){
+    fun update(data:Float){
+        if(data>max)
+            radius=height/2f
+        else
+            radius=height/2*data/max
         setCenterx(width/2f)
         setCentery(height/2f)
         invalidate()
