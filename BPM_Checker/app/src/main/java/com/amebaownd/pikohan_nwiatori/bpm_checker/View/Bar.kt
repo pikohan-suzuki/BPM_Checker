@@ -36,13 +36,11 @@ class Bar(context: Context, max: Float,color:Int,textColor:Int,itemSize:Int,inte
     }
 
     override fun onDraw(canvas: Canvas?) {
-        Log.d("aaaaa", "aaaaaaaaaaaaa")
         textPaint.textSize=strokeWidth/2
         for(i in 0 until data.size) {
             val top = i * (strokeWidth + interval)
             val bottom = top + strokeWidth
             val right = data[i] / max * parentWidth
-            Log.d("aaaaa", i.toString())
             paint.alpha=255-(200*data[i]/max).toInt()
             canvas!!.drawRect(0f, top, right, bottom, paint)
             canvas.drawText(data[i].toInt().toString(),right+5,top+strokeWidth/2,textPaint)
