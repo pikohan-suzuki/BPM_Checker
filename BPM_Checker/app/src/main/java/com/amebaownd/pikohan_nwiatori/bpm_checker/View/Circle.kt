@@ -84,22 +84,27 @@ class Circle : View {
         if (data > max) {
             radius = height / 2f
             previousAlpha=secondaryPaint.alpha.toFloat()
-            secondaryPaint.alpha = 100
+            secondaryPaint.alpha = 130
         } else {
             radius = height / 2 * data / max
             previousAlpha=secondaryPaint.alpha.toFloat()
-            secondaryPaint.alpha = 200 - (100 * data / max).toInt()
+            secondaryPaint.alpha = 200 - (70 * data / max).toInt()
         }
         setCenterx(width /2f)
         setCentery(height / 2f)
+        textPaint.textSize=radius/2.5f
         invalidate()
+    }
+
+    fun reset(){
+        update(0f)
     }
 
     override fun onDraw(canvas: Canvas?) {
         if (centerx != 0f) {
-            canvas!!.drawText(data.toString(),centerx,centery,textPaint)
             canvas!!.drawCircle(centerx, centery, radius, primaryPaint)
             canvas!!.drawCircle(centerx, centery, radius - strokeWidth, secondaryPaint)
+            canvas!!.drawText("♩= "+data.toInt().toString(),centerx-(textPaint.textSize*3)/2,centery+textPaint.textSize/2,textPaint)
             val alphaAnimation = PropertyValuesHolder.ofFloat("alpha", previousAlpha/255f, secondaryPaint.alpha/255f)
             val xScaleAnimation = PropertyValuesHolder.ofFloat("scaleX",previousRadius/radius,1f)
             val yScaleAnimation = PropertyValuesHolder.ofFloat("scaleY",previousRadius/radius,1f)

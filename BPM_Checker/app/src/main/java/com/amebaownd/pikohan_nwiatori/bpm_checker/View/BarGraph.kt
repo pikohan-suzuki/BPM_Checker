@@ -52,6 +52,10 @@ class BarGraph : LinearLayout {
     fun getColor() = color
     fun getMax()=max
     fun getItemSize()=itemSize
+    fun reset(){
+        barQueue.reset()
+        bar.update(barQueue.getList())
+    }
 
     class BarQueue(){
         private val mutableList= mutableListOf<Float>()
@@ -68,5 +72,10 @@ class BarGraph : LinearLayout {
         }
         fun getSize() = mutableList.size
         fun getList()=mutableList
+        fun reset(){
+            while(mutableList.size!=0){
+                dequeue()
+            }
+        }
     }
 }
