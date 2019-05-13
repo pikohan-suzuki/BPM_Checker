@@ -10,7 +10,7 @@ enum class Direction(val value:Int){
     BOTTOM(3)
 }
 
-class HalfCircle(private val color:Int,private val direction:Direction) : Drawable() {
+class TabButton(private val color:Int,private val direction:Direction) : Drawable() {
     private var paint = Paint()
 
     override fun draw(canvas: Canvas) {
