@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BPM_Checker</string>
+    <string name="record_button">Tap Here!</string>
+    <string name="reset">RESET</string>
+    <string name="save">SAVE</string>
+    <string name="saved">SAVED!!</string>
 </resources>
