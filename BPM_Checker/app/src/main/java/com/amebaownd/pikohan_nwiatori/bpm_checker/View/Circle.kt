@@ -27,9 +27,12 @@ class Circle : View {
     private var previousAlpha =0f
     private var max = 300f
     private var color: Int = Color.RED
+    private var textColor:Int =Color.CYAN
     private var strokeWidth = 0.5f
     private var primaryPaint = Paint()
     private var secondaryPaint = Paint()
+    private var textPaint=Paint()
+    private var data=0f
 
     fun setCenterx(num: Float) {
         this.centerx = num
@@ -58,19 +61,25 @@ class Circle : View {
         primaryPaint.color = color
         secondaryPaint.color = color
     }
+    fun setTextColor(color:Int){
+        this.textColor=color
+        textPaint.color=color
+    }
 
     private fun initView(attrs: AttributeSet?) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.Circle)
         setColor(typedArray.getColor(R.styleable.Circle_circle_color, Color.RED))
         setStrokeWidth(typedArray.getFloat(R.styleable.Circle_stroke_width, 2f))
         setMax(typedArray.getFloat(R.styleable.Circle_circle_max, 300f))
+        setTextColor(typedArray.getColor(R.styleable.Circle_circle_text_color, Color.CYAN))
 
-        setCenterx(width / 2f)
-        setCentery(height / 2f)
+        setCenterx(width/2f)
+        setCentery(height/2f)
         primaryPaint.style = Paint.Style.STROKE
     }
 
     fun update(data: Float) {
+        this.data=data
         previousRadius = radius
         if (data > max) {
             radius = height / 2f
@@ -81,13 +90,14 @@ class Circle : View {
             previousAlpha=secondaryPaint.alpha.toFloat()
             secondaryPaint.alpha = 200 - (100 * data / max).toInt()
         }
-        setCenterx(width / 2f)
+        setCenterx(width /2f)
         setCentery(height / 2f)
         invalidate()
     }
 
     override fun onDraw(canvas: Canvas?) {
         if (centerx != 0f) {
+            canvas!!.drawText(data.toString(),centerx,centery,textPaint)
             canvas!!.drawCircle(centerx, centery, radius, primaryPaint)
             canvas!!.drawCircle(centerx, centery, radius - strokeWidth, secondaryPaint)
             val alphaAnimation = PropertyValuesHolder.ofFloat("alpha", previousAlpha/255f, secondaryPaint.alpha/255f)

@@ -12,6 +12,7 @@ class BarGraph : LinearLayout {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :super(context, attrs, defStyleAttr)
 
     private var color:Int =Color.RED
+    private var textColor= Color.CYAN
     private var max:Float =100f
     private var itemSize:Int =10
     private var interval:Float=5f
@@ -21,10 +22,11 @@ class BarGraph : LinearLayout {
     private fun initView(context: Context, attrs: AttributeSet?){
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.BarGraph)
         setColor(typedArray.getColor(R.styleable.BarGraph_bar_color,Color.RED))
+        setTextColor(typedArray.getColor(R.styleable.BarGraph_bar_text_color,Color.CYAN))
         setMax(typedArray.getFloat(R.styleable.BarGraph_max,100f))
         setItemSize(typedArray.getInteger(R.styleable.BarGraph_item_size,10))
         setInterval(typedArray.getFloat(R.styleable.BarGraph_interval,5f))
-        bar=Bar(this.context,this.max,this.color,this.itemSize,this.interval,this.height.toFloat(),this.width.toFloat())
+        bar=Bar(this.context,this.max,this.color,this.textColor,this.itemSize,this.interval,this.height.toFloat(),this.width.toFloat())
         this.addView(bar)
     }
 
@@ -43,6 +45,7 @@ class BarGraph : LinearLayout {
     }
 
     fun setColor(color:Int){this.color=color}
+    fun setTextColor(color:Int){this.textColor=color}
     fun setMax(num:Float){max=num}
     fun setItemSize(num:Int){this.itemSize=num}
     fun setInterval(num:Float){this.interval=num}

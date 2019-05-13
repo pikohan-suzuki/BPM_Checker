@@ -7,7 +7,7 @@ import android.graphics.Paint
 import android.util.Log
 import android.view.View
 
-class Bar(context: Context, max: Float,color:Int,itemSize:Int,interval:Float,parentHeight:Float,parentWidth:Float) : View(context) {
+class Bar(context: Context, max: Float,color:Int,textColor:Int,itemSize:Int,interval:Float,parentHeight:Float,parentWidth:Float) : View(context) {
 
 
     private var parentHeight = 100f
@@ -17,13 +17,16 @@ class Bar(context: Context, max: Float,color:Int,itemSize:Int,interval:Float,par
     private var itemSize=10
     private var max: Float = 100f
     private var color:Int = Color.RED
+    private var textColor=Color.CYAN
     private val paint= Paint()
+    private val textPaint=Paint()
 
     private var data = mutableListOf<Float>()
 
 
     init {
         setColor(color)
+        setTextColor(textColor)
         setMax(max)
         setItemSize(itemSize)
         setParentHeight(parentHeight)
@@ -34,6 +37,7 @@ class Bar(context: Context, max: Float,color:Int,itemSize:Int,interval:Float,par
 
     override fun onDraw(canvas: Canvas?) {
         Log.d("aaaaa", "aaaaaaaaaaaaa")
+        textPaint.textSize=strokeWidth/2
         for(i in 0 until data.size) {
             val top = i * (strokeWidth + interval)
             val bottom = top + strokeWidth
@@ -41,11 +45,16 @@ class Bar(context: Context, max: Float,color:Int,itemSize:Int,interval:Float,par
             Log.d("aaaaa", i.toString())
             paint.alpha=255-(200*data[i]/max).toInt()
             canvas!!.drawRect(0f, top, right, bottom, paint)
+            canvas.drawText(data[i].toInt().toString(),right+5,top+strokeWidth/2,textPaint)
         }
     }
     fun setColor(color:Int){
         this.color=color
         this.paint.color=color
+    }
+    fun setTextColor(color:Int){
+        this.textColor = color
+        this.textPaint.color=color
     }
     fun setMax(num:Float){this.max=num}
     fun setItemSize(num:Int){this.itemSize=num}
