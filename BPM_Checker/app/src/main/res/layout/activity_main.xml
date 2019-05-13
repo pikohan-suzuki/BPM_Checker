@@ -14,24 +14,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:bar_color="#2196F3"
-            app:bar_text_color="#40BEAF"
-            app:max="1250"
+            app:bar_color="@color/colorBar"
+            app:bar_text_color="@color/colorBarGraph"
+            app:max="1500"
             app:item_size="15"
             app:interval="5.0"
             android:id="@+id/bar_graph" app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintBottom_toTopOf="@+id/guideline" android:layout_marginBottom="8dp">
+            app:layout_constraintBottom_toTopOf="@+id/guideline" android:layout_marginBottom="32dp">
 
     </com.amebaownd.pikohan_nwiatori.bpm_checker.View.BarGraph>
     <Button
-            android:text="Button"
+            android:text="@string/record_button"
+            android:textColor="@color/colorButtonText"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:id="@+id/record_button" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="1.0" app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintVertical_bias="1.0" app:layout_constraintHorizontal_bias="0.0"
+            android:fontFamily="monospace" android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
     <android.support.constraint.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,10 +43,10 @@
             app:layout_constraintGuide_percent="0.7"/>
     <com.amebaownd.pikohan_nwiatori.bpm_checker.View.Circle
             android:id="@+id/circle"
-            app:circle_color="#FF5B27"
+            app:circle_color="@color/colorCircle"
             app:stroke_width="5.0"
-            app:circle_max="300"
-            app:circle_text_color="#D35D86"
+            app:circle_max="250"
+            app:circle_text_color="@color/colorCircleText"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/guideline4"
@@ -51,16 +54,19 @@
             app:layout_constraintVertical_bias="0.335"
             app:layout_constraintStart_toStartOf="@+id/guideline5"/>
     <Button
-            android:text="RESET"
+            android:text="@string/reset"
+            android:textColor="@color/colorButtonText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/guideline4" android:id="@+id/reset"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/save"
-            app:layout_constraintVertical_bias="1.0"/>
+            app:layout_constraintVertical_bias="1.0"
+            style="@style/Widget.AppCompat.Button" android:fontFamily="monospace" android:textStyle="bold"/>
     <Button
-            android:text="SAVE"
+            android:text="@string/save"
+            android:textColor="@color/colorButtonText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/save" android:layout_marginBottom="8dp"
@@ -68,17 +74,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/guideline4"
-            app:layout_constraintVertical_bias="1.0"/>
-    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                          android:id="@+id/guideline2"
-                                          android:orientation="vertical"
-                                          app:layout_constraintGuide_percent="0.8"/>
-    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                          android:id="@+id/guideline4"
-                                          android:orientation="horizontal"
-                                          app:layout_constraintGuide_percent="0.5"/>
-    <android.support.constraint.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                          android:id="@+id/guideline5"
-                                          android:orientation="vertical"
-                                          app:layout_constraintGuide_percent="0.3"/>
+            app:layout_constraintVertical_bias="1.0" android:fontFamily="monospace" android:textStyle="bold"/>
+    <android.support.constraint.Guideline
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/guideline2"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8"/>
+    <android.support.constraint.Guideline
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/guideline4"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5"/>
+    <android.support.constraint.Guideline
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/guideline5"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3"/>
 </android.support.constraint.ConstraintLayout>
