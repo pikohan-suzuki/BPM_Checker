@@ -16,15 +16,21 @@ class HalfCircleButton(private val color:Int,private val direction:Direction) : 
         if(direction==Direction.LEFT) {
             canvas.translate(bounds.right/2f,0f)
             canvas.drawArc(rectF, 90f, 180f, true, paint)
+            canvas.scale(2f,2f)
         }else if(direction==Direction.RIGHT){
             canvas.translate(-bounds.right/2f,0f)
             canvas.drawArc(rectF, -90f, 180f, true, paint)
+            canvas.scale(2f,2f)
         }else if(direction==Direction.BOTTOM){
-            canvas.translate(0f,bounds.bottom/2f)
+            canvas.translate(-bounds.right/2f,-bounds.bottom.toFloat())
+            canvas.scale(2f,2f)
             canvas.drawArc(rectF,0f, 180f, true, paint)
+
         }else{
-            canvas.translate(0f,-bounds.bottom/2f)
+            canvas.translate(-bounds.right/2f,0f)
+            canvas.scale(2f,2f)
             canvas.drawArc(rectF, -180f, 180f, true, paint)
+
         }
     }
 
