@@ -5,7 +5,7 @@ BPMを測定するとともに、タップの間隔とBPMをグラフで表示�
   
 ## 使い方  
 ##### アプリ画面 
-<img src="https://github.com/pikohan-suzuki/BPM_Checker/blob/images/Screenshot_1557749945.png" width="50%">
+<img src="https://github.com/pikohan-suzuki/BPM_Checker/blob/images/Screenshot_1557749945.png" width="25%">
 ## 計測方法  
 画面下部の"TAP HERE"を曲のテンポに合わせてタップします。 
 複数回タップすると、左側にタップ間隔が横棒グラフで、右側にBPMが円で表示されます。タップ間隔の平均を用いて計測をしているため、タップする回数が多いほど精度が向上します。また、BPMは小数点以下を切り捨てているため、BPMの数値には誤差が生じます。    
